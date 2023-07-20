@@ -1,6 +1,11 @@
 import {LoaderFunction} from 'react-router-dom'
 import {TeleportCity} from '../teleport-api/types'
 
+export type WeatherResponse_ = {
+  weather: WeatherResponse
+  location: TeleportCity
+}
+
 type WeatherResponse = {
   cod: string
   message: number
@@ -75,11 +80,8 @@ export type WeatherLoaderData = {
 
 export const weatherLoader: LoaderFunction = async (params) => {
   const cityId = params.params.geoname_id
-  const location = await fetch(`https://api.teleport.org/api/cities/geonameid:${cityId}/?embed=${encodeURIComponent('city:urban_area/ua:images')}`)
-    .then<TeleportCity>(r => r.json())
-  const coordinates = location.location.latlon
-  const weather = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${API_KEY}`)
-    .then<WeatherResponse>(r => r.json())
+  const { weather, location } = await fetch(`/api/weather/${cityId}`)
+    .then<WeatherResponse_>(r => r.json())
   const days: WeatherLoaderData['days'] = []
   for (const item of weather.list) {
     const date = new Date(item.dt * 1000)
