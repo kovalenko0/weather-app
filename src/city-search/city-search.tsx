@@ -1,4 +1,4 @@
-import React, {useRef} from 'react'
+import React, {useEffect, useState} from 'react'
 import {useCitySearch} from './use-city-search'
 import './city-search.css'
 import {useNavigate} from 'react-router-dom'
@@ -8,7 +8,13 @@ export type Props = {}
 export const CitySearch: React.FC<Props> = props => {
   const navigate = useNavigate()
   const search = useCitySearch()
-  const now = useRef(new Date())
+  const [now, setNow] = useState(new Date())
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setNow(new Date())
+    }, 60 * 1000)
+    return () => window.clearInterval(interval)
+  }, [])
   return <div className="city-search-page">
     <div className="search-input-wrapper">
       <input
@@ -49,7 +55,7 @@ export const CitySearch: React.FC<Props> = props => {
                       minute: '2-digit',
                       timeZone: item.timeZone
                     })
-                    .format(now.current)
+                    .format(now)
                 }
               </div>
             </button>

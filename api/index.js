@@ -12,7 +12,7 @@ app.get('/api/weather/:geoname_id', async (req, res) => {
         const location = locationResponse.data
         const coordinates = location.location.latlon
         const weather = await axios.get(`https://api.openweathermap.org/data/2.5/forecast?lat=${coordinates.latitude}&lon=${coordinates.longitude}&appid=${OPEN_WEATHER_API_KEY}`)
-        /** @type {WeatherResponse_} */
+        /** @type {CityWeatherResponse} */
         const responseData = {
             weather: weather.data,
             location

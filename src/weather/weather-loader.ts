@@ -1,7 +1,6 @@
-import {LoaderFunction} from 'react-router-dom'
 import {TeleportCity} from '../teleport-api/types'
 
-export type WeatherResponse_ = {
+export type CityWeatherResponse = {
   weather: WeatherResponse
   location: TeleportCity
 }
@@ -64,8 +63,6 @@ type WeatherResponseItem = {
   dt_txt: string
 }
 
-const API_KEY = 'a4e3edb428bf75326bc37d0fcf6dd1a6'
-
 export type WeatherLoaderData = {
   city: TeleportCity
   cityPicture?: string
@@ -78,10 +75,10 @@ export type WeatherLoaderData = {
   }[]
 }
 
-export const weatherLoader: LoaderFunction = async (params) => {
+export const weatherLoader = async (params: { params: { geoname_id?: string } }) => {
   const cityId = params.params.geoname_id
   const { weather, location } = await fetch(`/api/weather/${cityId}`)
-    .then<WeatherResponse_>(r => r.json())
+    .then<CityWeatherResponse>(r => r.json())
   const days: WeatherLoaderData['days'] = []
   for (const item of weather.list) {
     const date = new Date(item.dt * 1000)
