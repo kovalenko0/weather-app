@@ -1,0 +1,124 @@
+.city-search-page {
+    display: flex;
+    flex-flow: column;
+    gap: var(--gap-mid);
+    padding-top: 1.5em;
+    max-height: 100vh;
+    overflow: hidden;
+}
+
+.search-input-wrapper {
+    display: flex;
+    justify-content: center;
+    padding: 0 var(--gap-mid);
+}
+
+.search-input {
+    font-size: 1em;
+    padding: 0.7em 1.3em;
+    border: 2px solid var(--text-color-action);
+    border-radius: .3em;
+}
+
+.search-results-wrapper {
+    overflow-y: auto;
+}
+
+.search-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 1fr));
+    /*grid-template-rows: repeat(3, 1fr);*/
+    grid-column-gap: var(--gap-mid);
+    grid-row-gap: var(--gap-mid);
+    padding: var(--gap-mid);
+}
+
+
+.search-result {
+    border: none;
+    appearance: none;
+    text-decoration: none;
+    padding: 0;
+    display: flex;
+    background: #ededed;
+    flex-flow: column;
+    justify-content: space-between;
+    min-width: 0;
+    min-height: 0;
+    border-radius: 0.7em;
+    overflow: hidden;
+    position: relative;
+}
+
+.search-result-picture {
+    width: 100%;
+    margin: 0;
+}
+
+.search-result-picture-default {
+    transform: scale(0.9);
+}
+
+.search-result-city-name,
+.search-result-city-time {
+    font-size: 1.5em;
+    padding: .3em .5em;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    position: absolute;
+    background: rgb(255 255 255 / .9);
+    border-radius: .3em;
+    box-shadow: 0px 2px 3px -2px rgb(0 0 0 / 41%);
+}
+
+.search-result-city-name {
+    left: .5em;
+    right: .5em;
+    bottom: .45em;
+}
+
+.search-result-city-time {
+    top: .5em;
+    right: .5em;
+}
+
+@media (max-width: 500px) {
+    .search-input {
+        width: 100%;
+    }
+    .search-results {
+        display: flex;
+        flex-flow: column;
+        gap: var(--gap-mid);
+    }
+    .search-result {
+        width: 100%;
+        display: flex;
+        flex-flow: row;
+        justify-content: space-between;
+        padding: var(--gap-mid);
+        text-align: unset;
+    }
+    .search-result-city-name {
+        white-space: unset;
+    }
+    .search-result-city-name,
+    .search-result-city-time {
+        padding: 0;
+        display: block;
+        position: relative;
+        top: unset;
+        bottom: unset;
+        left: unset;
+        right: unset;
+        background: transparent;
+        text-overflow: unset;
+        box-shadow: none;
+        overflow: unset;
+    }
+    .search-result-picture {
+        display: none;
+    }
+}

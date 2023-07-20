@@ -5,9 +5,23 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  --gap-mid: 1em;
+  --gap-big: calc(var(--gap-mid) * 2);
+  --text-color: black;
+  --text-color-secondary: gray;
+  --border-color-light: lightgray;
+  --text-color-action: steelblue;
+  --background: white;
+  color: var(--text-color);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media (max-width: 500px) {
+  body {
+    --gap-mid: .5em;
+  }
+}
+
+* {
+  box-sizing: border-box;
 }

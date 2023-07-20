@@ -1,0 +1,123 @@
+.weather {
+    padding: var(--gap-mid) var(--gap-big);
+    padding-bottom: 0;
+    margin: 0 auto;
+    max-height: 100vh;
+    display: flex;
+    flex-flow: column;
+    max-width: fit-content;
+    background: rgba(255 255 255 / 0.8);
+}
+
+.weather-heading {
+    font-size: 1.3em;
+    margin-bottom: var(--gap-mid);
+    display: flex;
+    justify-content: space-between;
+    background: var(--background);
+    position: relative;
+    z-index: 1;
+}
+
+.weather-heading-city {
+    font-weight: bolder;
+}
+
+.weather-heading-city-change-link {
+    text-decoration: none;
+    color: var(--text-color-action)
+}
+
+.forecast-wrapper {
+    overflow-y: auto;
+    padding-bottom: var(--gap-mid);
+}
+
+.forecast {
+    position: relative;
+    z-index: 1;
+    margin-top: var(--gap-mid);
+    display: flex;
+    flex-flow: column;
+    gap: var(--gap-mid);
+}
+
+.forecast-day {
+    display: flex;
+    gap: var(--gap-big);
+    box-shadow: 0px 2px 3px -2px rgb(0 0 0 / 41%);
+    border: 1px solid var(--border-color-light);
+    border-radius: 0.5em;
+    padding: 0.5em;
+    background: var(--background);
+}
+
+.forecast-day:not(:last-child) {
+    padding-bottom: var(--gap-mid);
+}
+
+.forecast-day-title {
+    text-align: center;
+}
+
+.forecast-day-temp-range {
+    font-weight: 500;
+    font-size: 1.5em;
+    text-align: center;
+    position: relative;
+    white-space: nowrap;
+}
+
+.forecast-day-temp-range .temp-units {
+    display: block;
+    position: absolute;
+    left: 100%;
+    top: 0;
+    bottom: 0;
+}
+
+.forecast-day-weekday {
+    color: var(--text-color-secondary);
+    font-size: .9em;
+}
+
+.forecast-day-items {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    column-gap: 1.5em;
+    overflow-y: auto;
+    padding-left: var(--gap-mid);
+}
+
+.forecast-item {
+    display: flex;
+    flex-flow: column;
+}
+
+.forecast-item-icon-wrapper {
+    position: relative;
+}
+
+.forecast-item-icon {
+    transform: translate3d(-30%, 10%, 0);
+}
+
+.forecast-item-temp {
+    font-size: 1.2em;
+    font-weight: 500;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.forecast-item-time {
+    color: var(--text-color-secondary);
+    font-size: .8em;
+    white-space: nowrap;
+}
+
+.temp-units {
+    font-size: 0.6em;
+    font-weight: normal;
+    vertical-align: super;
+}

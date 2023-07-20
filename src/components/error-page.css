@@ -1,0 +1,10 @@
+.error-page {
+    padding: var(--gap-big);
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+}
+
+.error-page-icon {
+    width: 4em;
+}
