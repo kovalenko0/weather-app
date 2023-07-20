@@ -71,7 +71,7 @@ export const Weather: React.FC = () => {
                       <img
                         className="forecast-item-icon"
                         title={condition?.description}
-                        src={iconUrl(condition?.icon || defaultIcon + item.sys.pod)}
+                        src={iconUrl(condition?.icon || (defaultIcon + item.sys.pod))}
                         alt={condition?.description}
                       />
                       <div className="forecast-item-temp">
